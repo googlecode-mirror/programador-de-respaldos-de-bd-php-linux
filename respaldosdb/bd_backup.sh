@@ -12,7 +12,7 @@ fi
 
 
 #Directory to save generated sql files (domain name is appended)
-opath=/usr/tmp/sql_dumps/
+opath=/tmp/sql_dumps/
  
 # your mysql host
 mysqlhost=$host

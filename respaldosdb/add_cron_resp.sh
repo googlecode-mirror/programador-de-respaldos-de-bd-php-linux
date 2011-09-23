@@ -33,6 +33,6 @@ else
 fi
 
 
-crontab -l > /usr/tmp/user_crontab
-echo "$minute $hour $day $month $week $6 $7 $8 $9 ${10} ${11} ${12} ${13} ${14} ${15}" >> /usr/tmp/user_crontab
-crontab /usr/tmp/user_crontab
+crontab -l > /tmp/user_crontab
+echo "$minute $hour $day $month $week $6 $7 $8 $9 ${10} ${11} ${12} ${13} ${14} ${15}" >> /tmp/user_crontab
+crontab /tmp/user_crontab

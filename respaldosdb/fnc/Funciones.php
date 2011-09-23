@@ -3,7 +3,7 @@ require_once("Configuracion.php");
 
 Class Funciones{
     
-    public $conn;
+    public $conn = null;
     public $result;
     public $user;
     public $base_url;
@@ -15,6 +15,9 @@ Class Funciones{
     }
     
     function connect($bd_server, $bd_user, $bd_pass){
+        if($this->conn != null){
+            mysql_close($this->conn);
+        }
         $this->user = $bd_user;
         return $this->conn = mysql_connect($bd_server, $bd_user, $bd_pass);        
     }
@@ -87,8 +90,8 @@ Class Funciones{
     
     function delete_jobs(){
         exec("crontab -r");
-        exec("echo '#empty' > /usr/tmp/emptycron");
-        exec("crontab /usr/tmp/emptycron");
+        exec("echo '#empty' > /tmp/emptycron");
+        exec("crontab /tmp/emptycron");
         return true;
     }
 }

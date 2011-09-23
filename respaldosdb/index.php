@@ -75,9 +75,25 @@ $(document).ready(function(){
         
         if($("#dir_tipo").val()=="ftp"){
             urld = $("#ftp_host").val()
+            $("#dir_win").val("");
+            
         }
         if($("#dir_tipo").val()=="win"){
             urld = $("#dir_win").val()
+            $("#ftp_host").val("")
+            $("#ftp_user").val("")
+            $("#ftp_pass").val("")
+            
+        }
+        
+        
+        if($("#bd_server").val()==""){
+            alert("Debe introducir la ip del servidor de MySQL");
+            return;
+        }
+        if($("#bd_user").val()==""){
+            alert("Debe introducir el usuario del servidor de MySQL");
+            return;
         }
         $.ajax({
             url: 'fnc/core.php',

@@ -4,8 +4,9 @@ include('Configuracion.php');
 session_start();
 
 if($_POST['f']=="connect"){
-    $func = new Funciones();
+    $func = new Funciones();    
     $res = $func->connect($_POST['bd_server'],$_POST['bd_user'],$_POST['bd_password']);
+    
     $_SESSION['func'] = serialize($func);
     if(!$res){
         $data['valid'] = 0;
@@ -14,6 +15,8 @@ if($_POST['f']=="connect"){
         $data['valid'] = 1;
         $data['msg'] = "Conexión realizada con éxito.";
     }
+    
+    echo json_encode($data);
     
     
     
