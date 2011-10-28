@@ -126,11 +126,20 @@ $(document).ready(function(){
         $.ajax({
             url: 'fnc/core.php',
             data:{
-                f:'show_databases'
+                f:'show_databases',
+                bd_server: $("#bd_server").val(),
+                bd_user: $("#bd_user").val(),
+                bd_password: $("#bd_password").val()
+                
             },
             type:'post',
             dataType:'json',
             success:function(json){
+                if(json.valid==0){
+                    alert("No se pudo conectar");
+                    return;
+                }
+            
                 $("#bd_name").html(""); 
                 $.each(json,function(i,value){
                     //console.log(value.Database)
@@ -143,7 +152,7 @@ $(document).ready(function(){
     });
     
     
-    $("#btn_connect").click(function(){
+    /*$("#btn_connect").click(function(){
            $.ajax({
                url: 'fnc/core.php',
                data: {
@@ -164,7 +173,7 @@ $(document).ready(function(){
                }
            });
            
-       });
+       });*/
 });
 
 </script>
@@ -208,7 +217,7 @@ $(document).ready(function(){
                                                     <input type="text" id="bd_password" name="bd_password" />                                                    
                                                 </td></tr>
                                             <tr><td>
-                                                    <input type="button" id="btn_connect" name="btn_connect" value="Conectar"/>
+                                                    <!-- <input type="button" id="btn_connect" name="btn_connect" value="Conectar"/> -->
                                                     <input type="button" id="btn_consult" name="btn_consult" value="Consultar"/>
                                                 </td></tr>
                                         </table>

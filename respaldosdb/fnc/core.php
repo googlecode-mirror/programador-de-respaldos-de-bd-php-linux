@@ -22,10 +22,20 @@ if($_POST['f']=="connect"){
     
 }else{
     if(isset($_POST['f'])){
-        $func = unserialize($_SESSION['func']);    
+        //$func = unserialize($_SESSION['func']);    
         switch ($_POST['f']){
             case 'show_databases':
-                echo json_encode($func->show_databases());
+                $func = new Funciones();
+                $res = $func->connect($_POST['bd_server'],$_POST['bd_user'],$_POST['bd_password']);
+                 if(!$res){
+                    $data['valid'] = 0;
+                    $data['msg'] = "No se pudo conectar a la base de datos.";
+                }else{
+                    //$data['valid'] = 1;
+                    //$data['msg'] = "Conexión realizada con éxito.";
+                    echo json_encode($func->show_databases());
+                }           
+                
                 break;
             case 'add_dummy':
                 echo json_encode($func->add_cron_line_dummy());
