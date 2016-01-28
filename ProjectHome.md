@@ -1,0 +1,1 @@
+Desde una pantalla HTML se programan las tareas de respaldo de una base de datos, y el script guarda en un ftp o directorio de windows dado por el usuario el archivo comprimido..
